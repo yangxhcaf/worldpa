@@ -186,7 +186,47 @@
 <div id="study-case" class="section level1">
 <h1 class="hasAnchor">
 <a href="#study-case" class="anchor"></a>Study case</h1>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/get_wdpa.html">get_wdpa</a></span>(<span class="dt">regions =</span> <span class="st">"Africa"</span>, <span class="dt">path =</span> <span class="st">"Desktop/WDPA"</span>)</a></code></pre></div>
+<p>Here we want to download all PA for the African continent and then to merge all shapefiles into one big file.</p>
+<p>First, let’s download all PA shapefiles.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># Download PA for Africa         ----------</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw"><a href="../reference/get_wdpa.html">get_wdpa</a></span>(<span class="dt">regions =</span> <span class="st">"Africa"</span>)</a></code></pre></div>
+<p>Now, we want to read these shapefiles in R using the <code>sf</code> package. So let’s install and load this package.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"sf"</span>)</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(sf)</a></code></pre></div>
+<p>We can now read and merge these shapefiles using the functions <code>sf::st_read()</code> and <code>sf::rbind()</code>.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># List all downloaded shapefiles ----------</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">fls &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span>(<span class="dt">pattern    =</span> <span class="st">"</span><span class="ch">\\</span><span class="st">.shp$"</span>)</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co"># Read and merge all shapefiles  ----------</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>(fls)) {</a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7">  <span class="cf">if</span> (i <span class="op">==</span><span class="st"> </span><span class="dv">1</span>) {</a>
+<a class="sourceLine" id="cb14-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">    shape &lt;-<span class="st"> </span><span class="kw">st_read</span>(</a>
+<a class="sourceLine" id="cb14-10" data-line-number="10">      <span class="dt">dsn =</span> <span class="st">"."</span>,</a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">      <span class="dt">layer =</span> <span class="kw"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span>(<span class="st">"</span><span class="ch">\\</span><span class="st">.shp$"</span>, <span class="st">""</span>, fls[i])</a>
+<a class="sourceLine" id="cb14-12" data-line-number="12">    )</a>
+<a class="sourceLine" id="cb14-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb14-14" data-line-number="14">  } <span class="cf">else</span> {</a>
+<a class="sourceLine" id="cb14-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb14-16" data-line-number="16">    shape &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/cbind.html">rbind</a></span>(</a>
+<a class="sourceLine" id="cb14-17" data-line-number="17">      shape,</a>
+<a class="sourceLine" id="cb14-18" data-line-number="18">      <span class="kw">st_read</span>(</a>
+<a class="sourceLine" id="cb14-19" data-line-number="19">        <span class="dt">dsn =</span> <span class="st">"."</span>,</a>
+<a class="sourceLine" id="cb14-20" data-line-number="20">        <span class="dt">layer =</span> <span class="kw"><a href="https://rdrr.io/r/base/grep.html">gsub</a></span>(<span class="st">"</span><span class="ch">\\</span><span class="st">.shp$"</span>, <span class="st">""</span>, fls[i])</a>
+<a class="sourceLine" id="cb14-21" data-line-number="21">      )</a>
+<a class="sourceLine" id="cb14-22" data-line-number="22">    )</a>
+<a class="sourceLine" id="cb14-23" data-line-number="23">  }</a>
+<a class="sourceLine" id="cb14-24" data-line-number="24">}</a></code></pre></div>
+<p>Finally, then export this new shapefile with the function <code>sf::st_write()</code>.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">st_write</span>(</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">  <span class="dt">obj    =</span> shape,</a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">  <span class="dt">dsn    =</span> <span class="st">"."</span>,</a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">  <span class="dt">layer  =</span> <span class="st">"africa_protected_areas"</span>,</a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">  <span class="dt">driver =</span> <span class="st">"ESRI Shapefile"</span></a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">)</a></code></pre></div>
+<p>That’s all.</p>
+<p>Do not forget to visit this page to understand terms and conditions of the WDPA: <a href="https://www.protectedplanet.net/c/terms-and-conditions" class="uri">https://www.protectedplanet.net/c/terms-and-conditions</a>.</p>
 </div>
   </div>
 
