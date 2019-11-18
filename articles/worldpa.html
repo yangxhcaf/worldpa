@@ -82,11 +82,126 @@
 
     
     
-<p>In construction…</p>
+<div id="introduction" class="section level1">
+<h1 class="hasAnchor">
+<a href="#introduction" class="anchor"></a>Introduction</h1>
+<p>This R package is an interface to the World Database on Protected Areas (WDPA) hosted in the Protected planet website: <a href="https://www.protectedplanet.net" class="uri">https://www.protectedplanet.net</a>. It allows user to download spatial shapefiles of protected areas (PA) at three different levels: country, region or the world.</p>
+</div>
+<div id="installation" class="section level1">
+<h1 class="hasAnchor">
+<a href="#installation" class="anchor"></a>Installation</h1>
+<p>To install this package from <a href="https://www.github.com/frbcesab/worldpa">GitHub</a>, first install the package <a href="http://cran.r-project.org/web/packages/devtools/index.html"><code>devtools</code></a> from the CRAN (if not already installed).</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Install the devtools package   ----------</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># Install the worldpa package    ----------</span></a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"frbcesab/worldpa"</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># Load the worldpa package       ----------</span></a>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(worldpa)</a></code></pre></div>
+</div>
+<div id="getting-started" class="section level1">
+<h1 class="hasAnchor">
+<a href="#getting-started" class="anchor"></a>Getting started</h1>
+<p>This package contains four main functions:</p>
+<ul>
+<li>
+<code><a href="../reference/get_regions.html">get_regions()</a></code>: returns the world regions names according to the UNEP classification</li>
+<li>
+<code><a href="../reference/get_countries.html">get_countries()</a></code>: returns the world countries names according to the UNEP classification</li>
+<li>
+<code><a href="../reference/get_isocodes.html">get_isocodes()</a></code>: returns the ISO3 code of all countries of the world</li>
+<li>
+<code><a href="../reference/get_wdpa.html">get_wdpa()</a></code>: downloads world protected areas shapefiles (core function)</li>
+</ul>
+<p>Let’s explore the function <code><a href="../reference/get_regions.html">get_regions()</a></code>.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Get the world regions names    ----------</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="../reference/get_regions.html">get_regions</a></span>()</a></code></pre></div>
+<pre><code>## [1] "Africa"                    "Asia &amp; Pacific"           
+## [3] "Europe"                    "Latin America &amp; Caribbean"
+## [5] "North America"             "Polar"                    
+## [7] "West Asia"</code></pre>
+<p>This function returns the correct spelling of world regions, useful to set the parameter <code>regions</code> of the function <code><a href="../reference/get_wdpa.html">get_wdpa()</a></code>.</p>
+<p>Now, let’s take a look at the function <code><a href="../reference/get_countries.html">get_countries()</a></code>.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="co"># Get the world countries names  ----------</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">countries &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_countries.html">get_countries</a></span>()</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co"># Get the number of countries    ----------</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/base/length.html">length</a></span>(countries)</a></code></pre></div>
+<pre><code>## [1] 248</code></pre>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># Print the first ten countries  ----------</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">countries[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>]</a></code></pre></div>
+<pre><code>##  [1] "Afghanistan"         "Åland Islands"       "Albania"            
+##  [4] "Algeria"             "American Samoa"      "Andorra"            
+##  [7] "Angola"              "Anguilla"            "Antigua and Barbuda"
+## [10] "Argentina"</code></pre>
+<p>This function returns the correct spelling of world countries, useful to set the parameter <code>countries</code> of the function <code><a href="../reference/get_wdpa.html">get_wdpa()</a></code>.</p>
+<p>The function <code><a href="../reference/get_isocodes.html">get_isocodes()</a></code> returns the ISO3 code (three-letters acronym) of all countries of the world.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># Get the countries ISO3 codes   ----------</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">iso3 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_isocodes.html">get_isocodes</a></span>()</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co"># Print the first twenty rows    ----------</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(iso3, <span class="dv">20</span>)</a></code></pre></div>
+<pre><code>##    region                      country iso3
+## 1  Africa                      Algeria  DZA
+## 2  Africa                      Burundi  BDI
+## 3  Africa                       Angola  AGO
+## 4  Africa                     Botswana  BWA
+## 5  Africa                        Benin  BEN
+## 6  Africa                 Burkina Faso  BFA
+## 7  Africa                        Egypt  EGY
+## 8  Africa     Central African Republic  CAF
+## 9  Africa                     Cameroon  CMR
+## 10 Africa Democratic Republic of Congo  COD
+## 11 Africa                        Congo  COG
+## 12 Africa                        Gabon  GAB
+## 13 Africa                Côte D'Ivoire  CIV
+## 14 Africa                        Ghana  GHA
+## 15 Africa                       Guinea  GIN
+## 16 Africa                       Gambia  GMB
+## 17 Africa                Guinea-Bissau  GNB
+## 18 Africa                        Libya  LBY
+## 19 Africa                       Malawi  MWI
+## 20 Africa                      Morocco  MAR</code></pre>
+<p>Finally, the use of the function <code><a href="../reference/get_wdpa.html">get_wdpa()</a></code> is quite simple:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># Download PA for one country    ----------</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw"><a href="../reference/get_wdpa.html">get_wdpa</a></span>(<span class="dt">countries =</span> <span class="st">"Spain"</span>)</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co"># Download PA for two countries  ----------</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="kw"><a href="../reference/get_wdpa.html">get_wdpa</a></span>(<span class="dt">countries =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Portugal"</span>, <span class="st">"Spain"</span>))</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co"># Download PA for one region     ----------</span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="kw"><a href="../reference/get_wdpa.html">get_wdpa</a></span>(<span class="dt">regions =</span> <span class="st">"Africa"</span>)</a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co"># Download PA for two regions    ----------</span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="kw"><a href="../reference/get_wdpa.html">get_wdpa</a></span>(<span class="dt">regions =</span> <span class="kw"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Europe"</span>, <span class="st">"Africa"</span>))</a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="co"># Download PA for the world      ----------</span></a>
+<a class="sourceLine" id="cb10-14" data-line-number="14"><span class="kw"><a href="../reference/get_wdpa.html">get_wdpa</a></span>() <span class="co"># Not recommended (too big)</span></a></code></pre></div>
+<p>The argument <code>path</code> can be set to change the directory where shapefiles will be written. The default is the current directory. Let’s say we want to save shapefiles in the directory <strong>wdpa</strong> located on the <strong>Desktop</strong>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="../reference/get_wdpa.html">get_wdpa</a></span>(<span class="dt">countries =</span> <span class="st">"Spain"</span>, <span class="dt">path =</span> <span class="st">"/Users/username/Desktop/wdpa"</span>)   <span class="co"># Unix</span></a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw"><a href="../reference/get_wdpa.html">get_wdpa</a></span>(<span class="dt">countries =</span> <span class="st">"Spain"</span>, <span class="dt">path =</span> <span class="st">"C:/Users/username/Desktop/wdpa"</span>) <span class="co"># Windows</span></a></code></pre></div>
+<p><strong>Note:</strong> the function <code><a href="../reference/get_wdpa.html">get_wdpa()</a></code> does not return any object on R: shapefiles are directly written on the hard drive.</p>
+</div>
+<div id="study-case" class="section level1">
+<h1 class="hasAnchor">
+<a href="#study-case" class="anchor"></a>Study case</h1>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="../reference/get_wdpa.html">get_wdpa</a></span>(<span class="dt">regions =</span> <span class="st">"Africa"</span>, <span class="dt">path =</span> <span class="st">"Desktop/WDPA"</span>)</a></code></pre></div>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
 
+        <div id="tocnav">
+      <h2 class="hasAnchor">
+<a href="#tocnav" class="anchor"></a>Contents</h2>
+      <ul class="nav nav-pills nav-stacked">
+<li><a href="#introduction">Introduction</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#getting-started">Getting started</a></li>
+      <li><a href="#study-case">Study case</a></li>
+      </ul>
+</div>
       </div>
 
 </div>
