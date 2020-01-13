@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • worldpa</title>
+<title>Check Protected Planet API token — get_token • worldpa</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Check Protected Planet API token — get_token" />
+<meta property="og:description" content="This function checks if the user has stored a valid Protected Planet API token in the R environment (.Renviron) file under the key 'WDPA_KEY'." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -54,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -104,66 +106,50 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Check Protected Planet API token</h1>
+    <small class="dont-index">Source: <a href='https://github.com/frbcesab/worldpa/blob/master/R/get_token.R'><code>R/get_token.R</code></a></small>
+    <div class="hidden name"><code>get_token.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>This function checks if the user has stored a valid Protected Planet API token in the R environment (.Renviron) file under the key 'WDPA_KEY'.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>get_token</span>(<span class='kw'>key</span> <span class='kw'>=</span> <span class='st'>"WDPA_KEY"</span>)</pre>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="get_countries.html">get_countries()</a></code> </p>
-        </td>
-        <td><p>Get World countries names</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_isocodes.html">get_isocodes()</a></code> </p>
-        </td>
-        <td><p>Get ISO3 code of all World countries</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_regions.html">get_regions()</a></code> </p>
-        </td>
-        <td><p>Get World regions names</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_token.html">get_token()</a></code> </p>
-        </td>
-        <td><p>Check Protected Planet API token</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_wdpa.html">get_wdpa()</a></code> </p>
-        </td>
-        <td><p>Download World Protected Areas Shapefile</p></td>
-      </tr>
-    </tbody>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>key</th>
+      <td><p>[string] The name of the token value stored in the .Renviron file (recommended key name: 'WDPA_KEY').</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A vector of length one with the value of the API token.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Before using this package for the first time, the user must follow these steps:</p><ul>
+<li><p>Please fill in the form available at: https://api.protectedplanet.net/request to obtain a personal API token;</p></li>
+<li><p>Store the token in the .Renviron file under the key 'WDPA'. User can use the function <code><a href='https://usethis.r-lib.org/reference/edit.html'>usethis::edit_r_environ()</a></code>.</p></li>
+</ul>
+
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#arguments">Arguments</a></li>
+      <li><a href="#value">Value</a></li>
+      <li><a href="#details">Details</a></li>
     </ul>
+
+    <h2>Author</h2>
+    <p>Nicolas CASAJUS, <a href='mailto:nicolas.casajus@fondationbiodiversite.fr'>nicolas.casajus@fondationbiodiversite.fr</a></p>
   </div>
 </div>
 
