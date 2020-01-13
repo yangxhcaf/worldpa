@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check Protected Planet API token — get_token • worldpa</title>
+<title>Get the list of countries listed by the UNEP — get_countries • worldpa</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Check Protected Planet API token — get_token" />
-<meta property="og:description" content="This function checks if the user has stored a valid Protected Planet API token in the R environment (.Renviron) file under the key 'WDPA_KEY'." />
+<meta property="og:title" content="Get the list of countries listed by the UNEP — get_countries" />
+<meta property="og:description" content="This function gets the list of countries listed by the UNEP." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -108,40 +108,38 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check Protected Planet API token</h1>
-    <small class="dont-index">Source: <a href='https://github.com/frbcesab/worldpa/blob/master/R/get_token.R'><code>R/get_token.R</code></a></small>
-    <div class="hidden name"><code>get_token.Rd</code></div>
+    <h1>Get the list of countries listed by the UNEP</h1>
+    <small class="dont-index">Source: <a href='https://github.com/frbcesab/worldpa/blob/master/R/get_countries.R'><code>R/get_countries.R</code></a></small>
+    <div class="hidden name"><code>get_countries.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function checks if the user has stored a valid Protected Planet API token in the R environment (.Renviron) file under the key 'WDPA_KEY'.</p>
+    <p>This function gets the list of countries listed by the UNEP.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_token</span>(<span class='kw'>key</span> <span class='kw'>=</span> <span class='st'>"WDPA_KEY"</span>)</pre>
+    <pre class="usage"><span class='fu'>get_countries</span>(<span class='kw'>update</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>sleep</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>key</th>
-      <td><p>[string] The name of the token value stored in the .Renviron file (recommended key name: 'WDPA_KEY').</p></td>
+      <th>update</th>
+      <td><p>[boolean] If <code>FALSE</code>, import package dataset. If <code>TRUE</code>, use the WDPA API to get an up-to-date version.</p></td>
+    </tr>
+    <tr>
+      <th>sleep</th>
+      <td><p>[numeric] The time interval to suspend between each API request (in seconds).</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A vector of length one with the value of the API token.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Before using this package for the first time, the user must follow these steps:</p><ul>
-<li><p>Fill in the form available at: https://api.protectedplanet.net/request to obtain a personal API token;</p></li>
-<li><p>Store the token in the .Renviron file under the key 'WDPA'. User can use the function <code><a href='https://usethis.r-lib.org/reference/edit.html'>usethis::edit_r_environ()</a></code>.</p></li>
-</ul>
-
+    <p>A data frame with countries informations. See <code>wdpa_countries</code> for further details.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-## get_token()
+## get_countries(update = FALSE)
+## get_countries(update = TRUE, sleep = 0.25)
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -149,7 +147,6 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       <li><a href="#value">Value</a></li>
-      <li><a href="#details">Details</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
