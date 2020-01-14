@@ -82,10 +82,12 @@
 
     
     
+<p><br></p>
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
 <p>This R package is an interface to the World Database on Protected Areas (WDPA) hosted in the Protected planet website: <a href="https://www.protectedplanet.net" class="uri">https://www.protectedplanet.net</a>. It allows user to download spatial shapefiles of protected areas (PA) for world countries.</p>
+<p><br></p>
 </div>
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
@@ -99,6 +101,7 @@
 <a class="sourceLine" id="cb1-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># Load the worldpa package</span></a>
 <a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(worldpa)</a></code></pre></div>
+<p><br></p>
 </div>
 <div id="getting-started" class="section level1">
 <h1 class="hasAnchor">
@@ -112,9 +115,11 @@
 <li>
 <a href="https://frbcesab.github.io/worldpa/reference/get_wdpa.html"><code><a href="../reference/get_wdpa.html">get_wdpa()</a></code></a>: downloads world protected areas shapefiles.</li>
 </ul>
-<p>Let’s explore the function <a href="https://frbcesab.github.io/worldpa/reference/get_token.html"><code><a href="../reference/get_token.html">get_token()</a></code></a>.</p>
+<p><br></p>
+<p>First, let’s check if the WDPA token is correctly stored in your .Renviron file using the function <a href="https://frbcesab.github.io/worldpa/reference/get_token.html"><code><a href="../reference/get_token.html">get_token()</a></code></a>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Checks if your WDPA token is correctly stored</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="../reference/get_token.html">get_token</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">## [1] "z999zzz9zzz999999z9z99zz999zz999"</a></code></pre></div>
 </div>
   </div>
 
