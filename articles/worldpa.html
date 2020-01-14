@@ -159,21 +159,21 @@
 <h1 class="hasAnchor">
 <a href="#getting-protected-areas-shapefiles" class="anchor"></a>Getting protected areas shapefiles</h1>
 <hr>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">wdpa_countries[<span class="kw"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"Georgia"</span>, wdpa_countries[ , <span class="st">"country_name"</span>]), ]</a></code></pre></div>
+<p>Now, let’s use the function <a href="https://frbcesab.github.io/worldpa/reference/get_wdpa.html"><code><a href="../reference/get_wdpa.html">get_wdpa()</a></code></a> to download protected areas shapefiles for Georgia.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="co"># Get Georgia ISO-3 code</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">wdpa_countries[<span class="kw"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"Georgia"</span>, wdpa_countries[ , <span class="st">"country_name"</span>]), ]</a></code></pre></div>
 <pre><code>##     region_name region_iso2                                 country_name
 ## 133      Europe          EU                                      Georgia
 ## 235       Polar          PO South Georgia and the South Sandwich Islands
 ##     country_iso3 pas_count
 ## 133          GEO        89
 ## 235          SGS         1</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">pa_sf &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_wdpa.html">get_wdpa</a></span>(<span class="dt">isocode =</span> <span class="st">"GEO"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># Download Georgia protected areas</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2">(pa_sf &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_wdpa.html">get_wdpa</a></span>(<span class="dt">isocode =</span> <span class="st">"GEO"</span>))</a></code></pre></div>
 <pre><code>## Page 1 on 2 
-Page 2 on 2 </code></pre>
-<pre><code>## Warning in abbreviate_shapefile_names(obj): Field names abbreviated for ESRI
-## Shapefile driver</code></pre>
-<pre><code>## Writing layer `GEO_protectedareas' to data source `GEO_protectedareas' using driver `ESRI Shapefile'
+Page 2 on 2 
+Writing layer `GEO_protectedareas' to data source `GEO_protectedareas' using driver `ESRI Shapefile'
 ## Writing 89 features with 6 fields and geometry type Multi Polygon.</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(pa_sf)</a></code></pre></div>
 <pre><code>## Simple feature collection with 89 features and 6 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -203,10 +203,29 @@ Page 2 on 2 </code></pre>
 ## 8             Ia MULTIPOLYGON (((45.364 41.7...
 ## 9             II MULTIPOLYGON (((41.754 42.0...
 ## 10            Ia MULTIPOLYGON (((42.677 42.3...</code></pre>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span>()</a></code></pre></div>
-<pre><code>## [1] "GEO_protectedareas" "worldpa.rmd"</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(pa_sf)</a></code></pre></div>
-<p><img src="worldpa_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
+<p>The returned object is a simple feature {sf object} of <code>MULTIPOLYGONS</code>.</p>
+<p><br></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># List working directory content</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span>(<span class="dt">recursive =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## [1] "GEO_protectedareas/GEO_protectedareas.dbf"
+## [2] "GEO_protectedareas/GEO_protectedareas.prj"
+## [3] "GEO_protectedareas/GEO_protectedareas.shp"
+## [4] "GEO_protectedareas/GEO_protectedareas.shx"</code></pre>
+<p>The function <a href="https://frbcesab.github.io/worldpa/reference/get_wdpa.html"><code><a href="../reference/get_wdpa.html">get_wdpa()</a></code></a> has also exported the protected areas as an ESRI Shapefile in the working directory.</p>
+<p><br></p>
+<p>Finally, let’s vizualise the shapefile (the <code>ggplot2</code> way also works):</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(sf)</a></code></pre></div>
+<pre><code>## Linking to GEOS 3.7.1, GDAL 2.2.2, PROJ 4.9.2</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(maps)</a>
+<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="co"># Plot Georgia administrative boundaries</span></a>
+<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/pkg/maps/man/map.html">map</a></span>(<span class="dt">regions =</span> <span class="st">"Georgia"</span>)</a>
+<a class="sourceLine" id="cb17-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="co"># Add Georgia protected areas</span></a>
+<a class="sourceLine" id="cb17-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/pkg/sf/man/plot.html">plot</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/sf/man/st_geometry.html">st_geometry</a></span>(pa_sf), <span class="dt">col =</span> <span class="st">"#aaaaaa"</span>, <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="worldpa_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+<p><br></p>
+<p>If you have problems, please open issues at:<a href="https://github.com/frbcesab/worldpa/issues" class="uri">https://github.com/frbcesab/worldpa/issues</a></p>
 </div>
   </div>
 
