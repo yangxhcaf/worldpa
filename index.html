@@ -77,7 +77,7 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p>The R package is an interface of the World Database on Protected Areas (WDPA) hosted in the Protected planet website: <a href="https://www.protectedplanet.net" class="uri">https://www.protectedplanet.net</a>. The main function, <code><a href="reference/get_wdpa.html">get_wdpa()</a></code> downloads spatial shapefile of protected areas at three different levels: country, region or the world.</p>
+<p>This R package is an interface to the World Database on Protected Areas (WDPA) hosted on the Protected planet website: <a href="https://www.protectedplanet.net" class="uri">https://www.protectedplanet.net</a>. It allows user to download spatial shapefiles of protected areas (PA) for world countries using the WDPA API (<a href="https://api.protectedplanet.net" class="uri">https://api.protectedplanet.net</a>).</p>
 </div>
 <div id="terms-and-conditions" class="section level2">
 <h2 class="hasAnchor">
@@ -87,6 +87,12 @@
 <p>UNEP-WCMC and IUCN (<code>YEAR</code>) Protected Planet: The World Database on Protected Areas (WDPA). Cambridge, UK: UNEP-WCMC and IUCN. Available at: www.protectedplanet.net (dataset downloaded the <code>YEAR/MONTH</code>).</p>
 </blockquote>
 <p>For further details on terms and conditions of the WDPA usage, please visit the page: <a href="https://www.protectedplanet.net/c/terms-and-conditions" class="uri">https://www.protectedplanet.net/c/terms-and-conditions</a>.</p>
+</div>
+<div id="prerequisites" class="section level2">
+<h2 class="hasAnchor">
+<a href="#prerequisites" class="anchor"></a>Prerequisites</h2>
+<p>This package uses the WDPA API to access data on world protected areas. You must first have obtained a Personal API Token by filling in the form available at: <a href="https://api.protectedplanet.net/request" class="uri">https://api.protectedplanet.net/request</a>.</p>
+<p>Then follow these instructions to store this token: <a href="https://frbcesab.github.io/worldpa/articles/worldpa.html#managing-wdpa-api-token">Managing WDPA API Token</a></p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -102,8 +108,8 @@
 <p>Load the package <code>worldpa</code> in the R memory.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(worldpa)</a></code></pre></div>
 <p>And browse the vignette to get started.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/vignette.html">vignette</a></span>(<span class="dt">topic =</span> <span class="st">"worldpa"</span>)</a></code></pre></div>
-<p>Functions documentation can be found at: <a href="https://frbcesab.github.io/worldpa/reference/index.html" class="uri">https://frbcesab.github.io/worldpa/reference/index.html</a></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/browseURL.html">browseURL</a></span>(<span class="st">"https://frbcesab.github.io/worldpa/articles/worldpa.html"</span>)</a></code></pre></div>
+<p>Functions documentation can be found at: <a href="https://frbcesab.github.io/worldpa/reference/" class="uri">https://frbcesab.github.io/worldpa/reference/</a></p>
 </div>
 </div>
   </div>
