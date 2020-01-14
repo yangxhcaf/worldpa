@@ -93,7 +93,7 @@
 <li>
 <a href="https://frbcesab.github.io/worldpa/reference/get_token.html"><code><a href="../reference/get_token.html">get_token()</a></code></a>: check if your WDPA token is correctly stored;</li>
 <li>
-<a href="https://frbcesab.github.io/worldpa/reference/get_countries.html"><code><a href="../reference/get_countries.html">get_countries()</a></code></a>: get the world countries names and ISO-3 code (informations also available in the internal dataset <code>wdpa_countries</code>);</li>
+<a href="https://frbcesab.github.io/worldpa/reference/get_countries.html"><code><a href="../reference/get_countries.html">get_countries()</a></code></a>: get world countries informations;</li>
 <li>
 <a href="https://frbcesab.github.io/worldpa/reference/get_wdpa.html"><code><a href="../reference/get_wdpa.html">get_wdpa()</a></code></a>: download world protected areas shapefiles for one specified country.</li>
 </ul>
@@ -102,7 +102,7 @@
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb1-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb1-4" data-line-number="4"><span class="co"># Install the {worldpa} package</span></a>
-<a class="sourceLine" id="cb1-5" data-line-number="5">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"frbcesab/worldpa"</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"frbcesab/worldpa"</span>)</a>
 <a class="sourceLine" id="cb1-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># Load the {worldpa} package</span></a>
 <a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(worldpa)</a>
@@ -114,7 +114,7 @@
 <a class="sourceLine" id="cb1-14" data-line-number="14"><span class="kw"><a href="https://rdrr.io/r/utils/browseURL.html">browseURL</a></span>(<span class="st">"https://frbcesab.github.io/worldpa/reference/"</span>)</a>
 <a class="sourceLine" id="cb1-15" data-line-number="15"></a>
 <a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co"># Read this vignette</span></a>
-<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="kw"><a href="https://rdrr.io/r/utils/vignette.html">vignette</a></span>(<span class="dt">topic =</span> <span class="st">"worldpa"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="kw"><a href="https://rdrr.io/r/utils/browseURL.html">browseURL</a></span>(<span class="st">"https://frbcesab.github.io/worldpa/articles/worldpa.html"</span>)</a></code></pre></div>
 <p><br></p>
 </div>
 <div id="managing-wdpa-api-token" class="section level1">
@@ -131,9 +131,9 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">## [1] "z999zzz9zzz999999z9z99zz999zz999"</a></code></pre></div>
 <p><br></p>
 </div>
-<div id="getting-countries-informations" class="section level1">
+<div id="countries-metadata" class="section level1">
 <h1 class="hasAnchor">
-<a href="#getting-countries-informations" class="anchor"></a>Getting countries informations</h1>
+<a href="#countries-metadata" class="anchor"></a>Countries metadata</h1>
 <hr>
 <p>The internal dataset <code>wdpa_countries</code> contains different informations on world countries (country and UNEP region names, ISO code and number of protected areas).</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Load internal dataset</span></a>
@@ -152,9 +152,17 @@
 ## 8       Africa          AF                 Cameroon          CMR        49
 ## 9       Africa          AF Central African Republic          CAF        38
 ## 10      Africa          AF                     Chad          TCD        22</code></pre>
+<p><br></p>
 <p>As the WDPA is updated every month, you can get an updated version of this dataset by using the function <a href="https://frbcesab.github.io/worldpa/reference/get_countries.html"><code><a href="../reference/get_countries.html">get_countries()</a></code></a>:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># Get UNEP world countries informations</span></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="../reference/get_countries.html">get_countries</a></span>()</a></code></pre></div>
+<p><br></p>
+</div>
+<div id="download-protected-areas-shapefiles" class="section level1">
+<h1 class="hasAnchor">
+<a href="#download-protected-areas-shapefiles" class="anchor"></a>Download protected areas shapefiles</h1>
+<hr>
+<p>…</p>
 </div>
   </div>
 
@@ -166,7 +174,8 @@
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#introduction">Introduction</a></li>
       <li><a href="#managing-wdpa-api-token">Managing WDPA API token</a></li>
-      <li><a href="#getting-countries-informations">Getting countries informations</a></li>
+      <li><a href="#countries-metadata">Countries metadata</a></li>
+      <li><a href="#download-protected-areas-shapefiles">Download protected areas shapefiles</a></li>
       </ul>
 </div>
       </div>
