@@ -170,10 +170,6 @@
 ## 235          SGS         1</code></pre>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># Download Georgia protected areas</span></a>
 <a class="sourceLine" id="cb10-2" data-line-number="2">(pa_sf &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_wdpa.html">get_wdpa</a></span>(<span class="dt">isocode =</span> <span class="st">"GEO"</span>))</a></code></pre></div>
-<pre><code>## Page 1 on 2 
-Page 2 on 2 
-Writing layer `GEO_protectedareas' to data source `GEO_protectedareas' using driver `ESRI Shapefile'
-## Writing 89 features with 6 fields and geometry type Multi Polygon.</code></pre>
 <pre><code>## Simple feature collection with 89 features and 6 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -205,8 +201,8 @@ Writing layer `GEO_protectedareas' to data source `GEO_protectedareas' using dri
 ## 10            Ia MULTIPOLYGON (((42.677 42.3...</code></pre>
 <p>The returned object is a simple feature {sf object} of <code>MULTIPOLYGONS</code>.</p>
 <p><br></p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="co"># List working directory content</span></a>
-<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span>(<span class="dt">recursive =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="co"># List working directory content</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/list.files.html">list.files</a></span>(<span class="dt">recursive =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] "GEO_protectedareas/GEO_protectedareas.dbf"
 ## [2] "GEO_protectedareas/GEO_protectedareas.prj"
 ## [3] "GEO_protectedareas/GEO_protectedareas.shp"
@@ -214,18 +210,17 @@ Writing layer `GEO_protectedareas' to data source `GEO_protectedareas' using dri
 <p>The function <a href="https://frbcesab.github.io/worldpa/reference/get_wdpa.html"><code><a href="../reference/get_wdpa.html">get_wdpa()</a></code></a> has also exported the protected areas as an ESRI Shapefile in the working directory.</p>
 <p><br></p>
 <p>Finally, let’s vizualise the shapefile (the <code>ggplot2</code> way also works):</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(sf)</a></code></pre></div>
-<pre><code>## Linking to GEOS 3.7.1, GDAL 2.2.2, PROJ 4.9.2</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(maps)</a>
-<a class="sourceLine" id="cb17-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb17-3" data-line-number="3"><span class="co"># Plot Georgia administrative boundaries</span></a>
-<a class="sourceLine" id="cb17-4" data-line-number="4"><span class="kw"><a href="https://rdrr.io/pkg/maps/man/map.html">map</a></span>(<span class="dt">regions =</span> <span class="st">"Georgia"</span>)</a>
-<a class="sourceLine" id="cb17-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb17-6" data-line-number="6"><span class="co"># Add Georgia protected areas</span></a>
-<a class="sourceLine" id="cb17-7" data-line-number="7"><span class="kw"><a href="https://rdrr.io/pkg/sf/man/plot.html">plot</a></span>(<span class="kw"><a href="https://rdrr.io/pkg/sf/man/st_geometry.html">st_geometry</a></span>(pa_sf), <span class="dt">col =</span> <span class="st">"#aaaaaa"</span>, <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p><img src="worldpa_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># Plot Georgia administrative boundaries</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">maps<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/maps/man/map.html">map</a></span>(<span class="dt">regions =</span> <span class="st">"Georgia"</span>)</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co"># Add Georgia protected areas</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(sf<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/sf/man/st_geometry.html">st_geometry</a></span>(pa_sf), <span class="dt">col =</span> <span class="st">"#aaaaaa"</span>, <span class="dt">border =</span> <span class="ot">NA</span>, <span class="dt">add =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb14-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7"><span class="co"># Plot Georgia administrative boundaries</span></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8">maps<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/maps/man/map.html">map</a></span>(<span class="dt">add =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="worldpa_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
 <p><br></p>
-<p>If you have problems, please open issues at:<a href="https://github.com/frbcesab/worldpa/issues" class="uri">https://github.com/frbcesab/worldpa/issues</a></p>
+<p>If you have problems, please open issues at: <a href="https://github.com/frbcesab/worldpa/issues" class="uri">https://github.com/frbcesab/worldpa/issues</a></p>
 </div>
   </div>
 
