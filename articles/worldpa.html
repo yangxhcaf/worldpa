@@ -82,20 +82,28 @@
 
     
     
-<p><br><br></p>
+<p><br></p>
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
 <hr>
+<p>This R package is an interface to the World Database on Protected Areas (WDPA) hosted on the Protected planet website: <a href="https://www.protectedplanet.net" class="uri">https://www.protectedplanet.net</a>. It allows user to download spatial shapefiles of protected areas (PA) for world countries using WDPA API (<a href="https://api.protectedplanet.net" class="uri">https://api.protectedplanet.net</a>).</p>
 <p><br></p>
-<p>This R package is an interface to the World Database on Protected Areas (WDPA) hosted on the Protected planet website: <a href="https://www.protectedplanet.net" class="uri">https://www.protectedplanet.net</a>. It allows user to download spatial shapefiles of protected areas (PA) for world countries.</p>
-<p><br><br></p>
+<p>This package contains three main functions:</p>
+<ul>
+<li>
+<a href="https://frbcesab.github.io/worldpa/reference/get_token.html"><code><a href="../reference/get_token.html">get_token()</a></code></a>: check if your WDPA token is correctly stored;</li>
+<li>
+<a href="https://frbcesab.github.io/worldpa/reference/get_countries.html"><code><a href="../reference/get_countries.html">get_countries()</a></code></a>: get the world countries names and ISO-3 code (informations also available in the internal dataset <code>wdpa_countries</code>);</li>
+<li>
+<a href="https://frbcesab.github.io/worldpa/reference/get_wdpa.html"><code><a href="../reference/get_wdpa.html">get_wdpa()</a></code></a>: download world protected areas shapefiles for one specified country.</li>
+</ul>
+<p><br></p>
 </div>
 <div id="installation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h1>
 <hr>
-<p><br></p>
 <p>To install this package from <a href="https://www.github.com/frbcesab/worldpa">GitHub</a>, first install the package <a href="http://cran.r-project.org/web/packages/devtools/index.html"><code>devtools</code></a> from the CRAN (if not already installed).</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Install the {devtools} package</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</a>
@@ -104,28 +112,37 @@
 <a class="sourceLine" id="cb1-5" data-line-number="5">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"frbcesab/worldpa"</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>)</a>
 <a class="sourceLine" id="cb1-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb1-7" data-line-number="7"><span class="co"># Load the {worldpa} package</span></a>
-<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(worldpa)</a></code></pre></div>
-<p><br><br></p>
+<a class="sourceLine" id="cb1-8" data-line-number="8"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(worldpa)</a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="co"># Print the package content</span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="kw"><a href="https://rdrr.io/r/base/ls.html">ls</a></span>(<span class="st">"package:worldpa"</span>)</a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="co"># Browse the package help</span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="kw"><a href="https://rdrr.io/r/utils/browseURL.html">browseURL</a></span>(<span class="st">"https://frbcesab.github.io/worldpa/reference/"</span>)</a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="co"># Read this vignette</span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="kw"><a href="https://rdrr.io/r/utils/vignette.html">vignette</a></span>(<span class="dt">topic =</span> <span class="st">"worldpa"</span>)</a></code></pre></div>
+<p><br></p>
 </div>
-<div id="getting-started" class="section level1">
+<div id="managing-api-token" class="section level1">
 <h1 class="hasAnchor">
-<a href="#getting-started" class="anchor"></a>Getting started</h1>
+<a href="#managing-api-token" class="anchor"></a>Managing API token</h1>
 <hr>
+<p>This package uses the WDPA API to access data on world protected areas. You must first have obtained a Personal API Token by filling in the form available at: <a href="https://api.protectedplanet.net/request" class="uri">https://api.protectedplanet.net/request</a>. Once you have obtained this token, you must store it on your computer. As recommended by Hadley Wickham in it <a href="https://cran.r-project.org/web/packages/httr/vignettes/secrets.html">Managing secrets vignette</a>, you have to stored your API Token as an R Environment variable (a name-value pairs) listed in the <code>.Renviron</code> file in your home directory.</p>
+<p>Use the function <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ()</a></code> to open this file and add this line (by replacing z999zzz… by your Personal WDPA API Token):</p>
+<pre><code>WDPA_KEY=z999zzz9zzz999999z9z99zz999zz999</code></pre>
+<p>Save the file and relaunch R.</p>
+<p>Now, let’s check if your Personal WDPA API Token is correctly stored in your <code>.Renviron</code> file by using the function <a href="https://frbcesab.github.io/worldpa/reference/get_token.html"><code><a href="../reference/get_token.html">get_token()</a></code></a>.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="co"># Checks if your WDPA token is correctly stored</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw"><a href="../reference/get_token.html">get_token</a></span>()</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">## [1] "z999zzz9zzz999999z9z99zz999zz999"</a></code></pre></div>
 <p><br></p>
-<p>This package contains four main functions:</p>
-<ul>
-<li>
-<a href="https://frbcesab.github.io/worldpa/reference/get_token.html"><code><a href="../reference/get_token.html">get_token()</a></code></a>: checks if your WDPA token is correctly stored;</li>
-<li>
-<a href="https://frbcesab.github.io/worldpa/reference/get_countries.html"><code><a href="../reference/get_countries.html">get_countries()</a></code></a>: returns the world countries names according to the UNEP classification;</li>
-<li>
-<a href="https://frbcesab.github.io/worldpa/reference/get_wdpa.html"><code><a href="../reference/get_wdpa.html">get_wdpa()</a></code></a>: downloads world protected areas shapefiles.</li>
-</ul>
-<p><br></p>
-<p>First, let’s check if the WDPA token is correctly stored in your .Renviron file using the function <a href="https://frbcesab.github.io/worldpa/reference/get_token.html"><code><a href="../reference/get_token.html">get_token()</a></code></a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># Checks if your WDPA token is correctly stored</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="../reference/get_token.html">get_token</a></span>()</a></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">## [1] "z999zzz9zzz999999z9z99zz999zz999"</a></code></pre></div>
+</div>
+<div id="getting-countries-informations" class="section level1">
+<h1 class="hasAnchor">
+<a href="#getting-countries-informations" class="anchor"></a>Getting countries informations</h1>
+<hr>
+<p>…</p>
 </div>
   </div>
 
@@ -137,7 +154,8 @@
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#introduction">Introduction</a></li>
       <li><a href="#installation">Installation</a></li>
-      <li><a href="#getting-started">Getting started</a></li>
+      <li><a href="#managing-api-token">Managing API token</a></li>
+      <li><a href="#getting-countries-informations">Getting countries informations</a></li>
       </ul>
 </div>
       </div>
