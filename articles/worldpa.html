@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>worldpa: an interface to the World Database on Protected Areas (WDPA) • worldpa</title>
+<title>worldpa: An interface to the World Database on Protected Areas (WDPA) • worldpa</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="worldpa: an interface to the World Database on Protected Areas (WDPA)">
+<script src="../pkgdown.js"></script><meta property="og:title" content="worldpa: An interface to the World Database on Protected Areas (WDPA)">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -70,7 +70,7 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>worldpa: an interface to the World Database on Protected Areas (WDPA)</h1>
+      <h1>worldpa: An interface to the World Database on Protected Areas (WDPA)</h1>
                         <h4 class="author">Nicolas CASAJUS &lt; <a href="mailto:nicolas.casajus@fondationbiodiversite.fr">nicolas.casajus@fondationbiodiversite.fr</a> &gt;</h4>
             
             <h4 class="date">2020-01-14</h4>
@@ -82,7 +82,6 @@
 
     
     
-<p><br></p>
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
@@ -97,6 +96,7 @@
 <li>
 <a href="https://frbcesab.github.io/worldpa/reference/get_wdpa.html"><code><a href="../reference/get_wdpa.html">get_wdpa()</a></code></a>: download world protected areas shapefiles for one specified country.</li>
 </ul>
+<p><br></p>
 <p>To install this package from <a href="https://www.github.com/frbcesab/worldpa">GitHub</a>, first install the package <a href="http://cran.r-project.org/web/packages/devtools/index.html"><code>devtools</code></a> from the CRAN (if not already installed).</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Install the {devtools} package</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</a>
@@ -131,16 +131,13 @@
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">## [1] "z999zzz9zzz999999z9z99zz999zz999"</a></code></pre></div>
 <p><br></p>
 </div>
-<div id="countries-metadata" class="section level1">
+<div id="getting-countries-metadata" class="section level1">
 <h1 class="hasAnchor">
-<a href="#countries-metadata" class="anchor"></a>Countries metadata</h1>
+<a href="#getting-countries-metadata" class="anchor"></a>Getting countries metadata</h1>
 <hr>
 <p>The internal dataset <code>wdpa_countries</code> contains different informations on world countries (country and UNEP region names, ISO code and number of protected areas).</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Load internal dataset</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(wdpa_countries)</a>
-<a class="sourceLine" id="cb5-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co"># Print first rows of the dataset</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(wdpa_countries, <span class="dv">10</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(wdpa_countries)</a></code></pre></div>
 <pre><code>##    region_name region_iso2             country_name country_iso3 pas_count
 ## 1       Africa          AF                  Algeria          DZA        78
 ## 2       Africa          AF                   Angola          AGO        14
@@ -158,11 +155,58 @@
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="../reference/get_countries.html">get_countries</a></span>()</a></code></pre></div>
 <p><br></p>
 </div>
-<div id="download-protected-areas-shapefiles" class="section level1">
+<div id="getting-protected-areas-shapefiles" class="section level1">
 <h1 class="hasAnchor">
-<a href="#download-protected-areas-shapefiles" class="anchor"></a>Download protected areas shapefiles</h1>
+<a href="#getting-protected-areas-shapefiles" class="anchor"></a>Getting protected areas shapefiles</h1>
 <hr>
-<p>…</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">wdpa_countries[<span class="kw"><a href="https://rdrr.io/r/base/grep.html">grep</a></span>(<span class="st">"Georgia"</span>, wdpa_countries[ , <span class="st">"country_name"</span>]), ]</a></code></pre></div>
+<pre><code>##     region_name region_iso2                                 country_name
+## 133      Europe          EU                                      Georgia
+## 235       Polar          PO South Georgia and the South Sandwich Islands
+##     country_iso3 pas_count
+## 133          GEO        89
+## 235          SGS         1</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">pa_sf &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_wdpa.html">get_wdpa</a></span>(<span class="dt">isocode =</span> <span class="st">"GEO"</span>)</a></code></pre></div>
+<pre><code>## Page 1 on 2 
+Page 2 on 2 </code></pre>
+<pre><code>## Warning in abbreviate_shapefile_names(obj): Field names abbreviated for ESRI
+## Shapefile driver</code></pre>
+<pre><code>## Writing layer `GEO_protectedareas' to data source `GEO_protectedareas' using driver `ESRI Shapefile'
+## Writing 89 features with 6 fields and geometry type Multi Polygon.</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/print.html">print</a></span>(pa_sf)</a></code></pre></div>
+<pre><code>## Simple feature collection with 89 features and 6 fields
+## geometry type:  MULTIPOLYGON
+## dimension:      XY
+## bbox:           xmin: 40.31 ymin: 41.093 xmax: 46.736 ymax: 43.544
+## epsg (SRID):    4326
+## proj4string:    +proj=longlat +datum=WGS84 +no_defs
+## First 10 features:
+##    wdpa_id           pa_name country_iso3 is_marine           designation
+## 1     1652           Borjomi          GEO     FALSE Strict Nature Reserve
+## 2     1653         Lagodekhi          GEO     FALSE Strict Nature Reserve
+## 3     1654             Ritsa          GEO     FALSE Strict Nature Reserve
+## 4     1656         Kintrishi          GEO     FALSE Strict Nature Reserve
+## 5     1657           Liakhvi          GEO     FALSE Strict Nature Reserve
+## 6     1660        Vashlovani          GEO     FALSE Strict Nature Reserve
+## 7     1664 Bichvinta-Miusera          GEO     FALSE Strict Nature Reserve
+## 8     1665       Mariamjvari          GEO     FALSE Strict Nature Reserve
+## 9     1666          Kolkheti          GEO      TRUE         National Park
+## 10    1667          Sataplia          GEO     FALSE Strict Nature Reserve
+##    iucn_category                           geom
+## 1             Ia MULTIPOLYGON (((43.392 41.9...
+## 2             Ia MULTIPOLYGON (((46.27 41.89...
+## 3             Ia MULTIPOLYGON (((40.596 43.4...
+## 4             Ia MULTIPOLYGON (((41.996 41.7...
+## 5             Ia MULTIPOLYGON (((44.331 42.3...
+## 6             Ia MULTIPOLYGON (((46.623 41.1...
+## 7             Ia MULTIPOLYGON (((40.5 43.151...
+## 8             Ia MULTIPOLYGON (((45.364 41.7...
+## 9             II MULTIPOLYGON (((41.754 42.0...
+## 10            Ia MULTIPOLYGON (((42.677 42.3...</code></pre>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/list.files.html">dir</a></span>()</a></code></pre></div>
+<pre><code>## [1] "GEO_protectedareas" "worldpa.rmd"</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/graphics/plot.html">plot</a></span>(pa_sf)</a></code></pre></div>
+<p><img src="worldpa_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 </div>
   </div>
 
@@ -174,8 +218,8 @@
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#introduction">Introduction</a></li>
       <li><a href="#managing-wdpa-api-token">Managing WDPA API token</a></li>
-      <li><a href="#countries-metadata">Countries metadata</a></li>
-      <li><a href="#download-protected-areas-shapefiles">Download protected areas shapefiles</a></li>
+      <li><a href="#getting-countries-metadata">Getting countries metadata</a></li>
+      <li><a href="#getting-protected-areas-shapefiles">Getting protected areas shapefiles</a></li>
       </ul>
 </div>
       </div>
