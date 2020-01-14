@@ -87,8 +87,7 @@
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
 <hr>
-<p>This R package is an interface to the World Database on Protected Areas (WDPA) hosted on the Protected planet website: <a href="https://www.protectedplanet.net" class="uri">https://www.protectedplanet.net</a>. It allows user to download spatial shapefiles of protected areas (PA) for world countries using WDPA API (<a href="https://api.protectedplanet.net" class="uri">https://api.protectedplanet.net</a>).</p>
-<p><br></p>
+<p>This R package is an interface to the World Database on Protected Areas (WDPA) hosted on the Protected planet website: <a href="https://www.protectedplanet.net" class="uri">https://www.protectedplanet.net</a>. It allows user to download spatial shapefiles of protected areas (PA) for world countries using the WDPA API (<a href="https://api.protectedplanet.net" class="uri">https://api.protectedplanet.net</a>).</p>
 <p>This package contains three main functions:</p>
 <ul>
 <li>
@@ -98,12 +97,6 @@
 <li>
 <a href="https://frbcesab.github.io/worldpa/reference/get_wdpa.html"><code><a href="../reference/get_wdpa.html">get_wdpa()</a></code></a>: download world protected areas shapefiles for one specified country.</li>
 </ul>
-<p><br></p>
-</div>
-<div id="installation" class="section level1">
-<h1 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h1>
-<hr>
 <p>To install this package from <a href="https://www.github.com/frbcesab/worldpa">GitHub</a>, first install the package <a href="http://cran.r-project.org/web/packages/devtools/index.html"><code>devtools</code></a> from the CRAN (if not already installed).</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="co"># Install the {devtools} package</span></a>
 <a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</a>
@@ -124,12 +117,12 @@
 <a class="sourceLine" id="cb1-17" data-line-number="17"><span class="kw"><a href="https://rdrr.io/r/utils/vignette.html">vignette</a></span>(<span class="dt">topic =</span> <span class="st">"worldpa"</span>)</a></code></pre></div>
 <p><br></p>
 </div>
-<div id="managing-api-token" class="section level1">
+<div id="managing-wdpa-api-token" class="section level1">
 <h1 class="hasAnchor">
-<a href="#managing-api-token" class="anchor"></a>Managing API token</h1>
+<a href="#managing-wdpa-api-token" class="anchor"></a>Managing WDPA API token</h1>
 <hr>
 <p>This package uses the WDPA API to access data on world protected areas. You must first have obtained a Personal API Token by filling in the form available at: <a href="https://api.protectedplanet.net/request" class="uri">https://api.protectedplanet.net/request</a>. Once you have obtained this token, you must store it on your computer. As recommended by Hadley Wickham in it <a href="https://cran.r-project.org/web/packages/httr/vignettes/secrets.html">Managing secrets vignette</a>, you have to stored your API Token as an R Environment variable (a name-value pairs) listed in the <code>.Renviron</code> file in your home directory.</p>
-<p>Use the function <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ()</a></code> to open this file and add this line (by replacing z999zzz… by your Personal WDPA API Token):</p>
+<p>Use the function <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ()</a></code> to open this file and add this line (by replacing <code>z999zzz...</code> with your Personal WDPA API Token):</p>
 <pre><code>WDPA_KEY=z999zzz9zzz999999z9z99zz999zz999</code></pre>
 <p>Save the file and relaunch R.</p>
 <p>Now, let’s check if your Personal WDPA API Token is correctly stored in your <code>.Renviron</code> file by using the function <a href="https://frbcesab.github.io/worldpa/reference/get_token.html"><code><a href="../reference/get_token.html">get_token()</a></code></a>.</p>
@@ -142,7 +135,26 @@
 <h1 class="hasAnchor">
 <a href="#getting-countries-informations" class="anchor"></a>Getting countries informations</h1>
 <hr>
-<p>…</p>
+<p>The internal dataset <code>wdpa_countries</code> contains different informations on world countries (country and UNEP region names, ISO code and number of protected areas).</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="co"># Load internal dataset</span></a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(wdpa_countries)</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co"># Print first rows of the dataset</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(wdpa_countries, <span class="dv">10</span>)</a></code></pre></div>
+<pre><code>##    region_name region_iso2             country_name country_iso3 pas_count
+## 1       Africa          AF                  Algeria          DZA        78
+## 2       Africa          AF                   Angola          AGO        14
+## 3       Africa          AF                    Benin          BEN        59
+## 4       Africa          AF                 Botswana          BWA        22
+## 5       Africa          AF             Burkina Faso          BFA        96
+## 6       Africa          AF                  Burundi          BDI        21
+## 7       Africa          AF               Cabo Verde          CPV         7
+## 8       Africa          AF                 Cameroon          CMR        49
+## 9       Africa          AF Central African Republic          CAF        38
+## 10      Africa          AF                     Chad          TCD        22</code></pre>
+<p>As the WDPA is updated every month, you can get an updated version of this dataset by using the function <a href="https://frbcesab.github.io/worldpa/reference/get_countries.html"><code><a href="../reference/get_countries.html">get_countries()</a></code></a>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># Get UNEP world countries informations</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw"><a href="../reference/get_countries.html">get_countries</a></span>()</a></code></pre></div>
 </div>
   </div>
 
@@ -153,8 +165,7 @@
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
 <li><a href="#introduction">Introduction</a></li>
-      <li><a href="#installation">Installation</a></li>
-      <li><a href="#managing-api-token">Managing API token</a></li>
+      <li><a href="#managing-wdpa-api-token">Managing WDPA API token</a></li>
       <li><a href="#getting-countries-informations">Getting countries informations</a></li>
       </ul>
 </div>
