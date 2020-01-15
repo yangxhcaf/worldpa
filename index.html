@@ -91,16 +91,16 @@
 <div id="prerequisites" class="section level2">
 <h2 class="hasAnchor">
 <a href="#prerequisites" class="anchor"></a>Prerequisites</h2>
-<p>This package uses the WDPA API to access data on world protected areas. You must first have obtained a Personal API Token by filling in the form available at: <a href="https://api.protectedplanet.net/request" class="uri">https://api.protectedplanet.net/request</a>.</p>
-<p>Then follow these instructions to store this token: <a href="https://frbcesab.github.io/worldpa/articles/worldpa.html#managing-wdpa-api-token">Managing WDPA API Token</a></p>
+<p>This package uses the WDPA API to access data on world protected areas. You must first have obtained a Personal API Token by filling in the form available at: <a href="https://api.protectedplanet.net/request" class="uri">https://api.protectedplanet.net/request</a>. Then follow these instructions to store this token: <a href="https://frbcesab.github.io/worldpa/articles/worldpa.html#managing-wdpa-api-token">Managing WDPA API Token</a>.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>First install the package <a href="http://cran.r-project.org/web/packages/devtools/index.html"><code>devtools</code></a> from the CRAN.</p>
+<p>First install the package <a href="http://cran.r-project.org/web/packages/devtools/index.html"><code>devtools</code></a> from the CRAN (if not already installed).</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>, <span class="dt">dependencies =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <p>Then install the <code>worldpa</code> package from GitHub.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"frbcesab/worldpa"</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><strong>Note:</strong> Build the vignette only if you already have stored the token.</p>
 </div>
 <div id="getting-started" class="section level2">
 <h2 class="hasAnchor">
