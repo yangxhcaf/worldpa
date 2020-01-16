@@ -73,7 +73,7 @@
       <h1>worldpa: An interface to the World Database on Protected Areas (WDPA)</h1>
                         <h4 class="author">Nicolas CASAJUS &lt; <a href="mailto:nicolas.casajus@fondationbiodiversite.fr">nicolas.casajus@fondationbiodiversite.fr</a> &gt;</h4>
             
-            <h4 class="date">2020-01-15</h4>
+            <h4 class="date">2020-01-16</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/frbcesab/worldpa/blob/master/vignettes/worldpa.rmd"><code>vignettes/worldpa.rmd</code></a></small>
       <div class="hidden name"><code>worldpa.rmd</code></div>
@@ -86,7 +86,7 @@
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
 <hr>
-<p>This R package is an interface to the World Database on Protected Areas (WDPA) hosted on the Protected planet website: <a href="https://www.protectedplanet.net" class="uri">https://www.protectedplanet.net</a>. It allows user to download spatial shapefiles of protected areas (PA) for world countries using the WDPA API (<a href="https://api.protectedplanet.net" class="uri">https://api.protectedplanet.net</a>).</p>
+<p>This R package is an interface to the World Database on Protected Areas (WDPA) hosted on the Protected planet website: <a href="https://www.protectedplanet.net" class="uri">https://www.protectedplanet.net</a>. It allows users to download spatial shapefiles of protected areas (PA) for world countries using the WDPA API (<a href="https://api.protectedplanet.net" class="uri">https://api.protectedplanet.net</a>).</p>
 <p>This package contains three main functions:</p>
 <ul>
 <li>
@@ -121,7 +121,7 @@
 <h1 class="hasAnchor">
 <a href="#managing-wdpa-api-token" class="anchor"></a>Managing WDPA API token</h1>
 <hr>
-<p>This package uses the WDPA API to access data on world protected areas. You must first have obtained a Personal API Token by filling in the form available at: <a href="https://api.protectedplanet.net/request" class="uri">https://api.protectedplanet.net/request</a>. Once you have obtained this token, you must store it on your computer. As recommended by Hadley Wickham in it <a href="https://cran.r-project.org/web/packages/httr/vignettes/secrets.html">Managing secrets vignette</a>, you have to stored your API Token as an R Environment variable (a name-value pairs) listed in the <code>.Renviron</code> file in your home directory.</p>
+<p>This package uses the WDPA API to access data on world protected areas. You must first have obtained a Personal API Token by filling in the form available at: <a href="https://api.protectedplanet.net/request" class="uri">https://api.protectedplanet.net/request</a>. Once you have obtained this token, you must store it on your computer. As recommended by Hadley Wickham in his <a href="https://cran.r-project.org/web/packages/httr/vignettes/secrets.html">Managing secrets vignette</a>, you have to stored your API Token as an R Environment variable (a name-value pairs) listed in the <code>.Renviron</code> file in your home directory.</p>
 <p>Use the function <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ()</a></code> to open this file and add this line (by replacing <code>z999zzz...</code> with your Personal WDPA API Token):</p>
 <pre><code>WDPA_KEY=z999zzz9zzz999999z9z99zz999zz999</code></pre>
 <p>Save the file and relaunch R.</p>
